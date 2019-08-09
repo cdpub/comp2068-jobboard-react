@@ -1,0 +1,9 @@
+extends ../layouts/main.pug
+
+block content
+    .container
+        header
+            h1= `Edit ${employer.company}`
+        
+        div
+            include ./form.pug 

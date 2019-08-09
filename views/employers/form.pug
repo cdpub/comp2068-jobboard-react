@@ -1,0 +1,27 @@
+form(action=(employer ? `/employers/update` : '/employers'), method="POST")
+  if employer
+      input(type="hidden", name="id", value=employer.id)
+
+
+  .form-group
+    label Company
+    input.form-control(name="employer[company]",  value=(employer ? employer.company : null))
+
+  .form-group
+    label Username
+    input.form-control(name="employer[username]", required, value=(employer ? employer.username : null))
+  .form-group
+    label Email
+    input.form-control(name="employer[email]", required, value=(employer ? employer.email : null))
+
+  .form-group
+    label Password
+    input.form-control(name="employer[password]", type="password", required, value=(employer ? employer.password : null))
+
+  .form-group
+    label Password Confirmation
+    input.form-control(name="employer[passwordConfirmation]", required, type="password", value=(employer ? employer.passwordConfirmation : null))
+
+  .form-group
+    button.btn.btn-dark(type="submit") Submit
+

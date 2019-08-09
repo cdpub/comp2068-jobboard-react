@@ -1,0 +1,24 @@
+form(action=(job ? `/jobs/update` : '/jobs'), method="POST")
+    if job
+        input(type="hidden", name="id", value=job.id)
+
+    .form-group
+        label Title
+        input.form-control(name="job[title]", required, value=(job ? job.title : null))
+    .form-group
+        label Position
+        textarea.form-control(name="job[position]")
+            = job ? job.position : null   
+    .form-group
+        label Location
+        textarea.form-control(name="job[location]")
+            = job ? job.location : null 
+    .form-group
+        label Status
+        select.form-control(name="job[status]", required)
+            each status in ['ACTIVE', 'DUE']
+                option(value=status, selected=(job && job.status === status)) 
+                    =status.toLowerCase() 
+    .form-group
+        button.btn.btn-dark(type="submit") Submit
+

@@ -1,0 +1,32 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= title
+
+    div
+      table.table.table-striped
+        thead
+          tr
+            th Title
+            th Position
+            th Company
+            th Location
+            th Status
+            th Actions
+        
+        tbody
+          each job in jobs
+            tr
+              td
+                a(href=`/jobs/${job.id}`)= job.title       
+              td= job.position
+              td= `${job.company.company}`
+              td= job.location
+              td= job.status
+              td
+                a(href=`/jobs/${job.id}/edit`) edit        
+                = ' | '
+                form.destroy(action=`/jobs/destroy`, method="POST", onsubmit=`return confirm("Are you sure?")`)
+                  input(type="hidden", name="id", value=job.id)
+                  input(type="submit", value="delete")

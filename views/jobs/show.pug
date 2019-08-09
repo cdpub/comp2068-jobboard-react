@@ -1,0 +1,10 @@
+extends ../layouts/main.pug
+
+block content
+  .container
+    h1 #{job.title}
+    ul
+    h3  Position  : #{job.position} 
+    h3  Company   : #{job.company.company}
+    h3  Location  : #{job.location} 
+    h3  Status    : #{job.status} 

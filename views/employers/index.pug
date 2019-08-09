@@ -1,0 +1,23 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= title
+
+    div
+      table.table.table-striped
+        thead
+          tr
+            th Company
+            th Contact Person
+            th Email
+ 
+        
+        tbody
+          
+          each employer in employers
+            tr
+              td
+                a(href=`/employers/${employer.id}`)= employer.company  
+              td= employer.username      
+              td= employer.email

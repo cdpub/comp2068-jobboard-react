@@ -1,0 +1,34 @@
+nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-primary
+  a.navbar-brand(href='/') Job Board
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item
+        a.nav-link(href='/') Home
+
+      if isAuthenticated 
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Jobs
+        .dropdown-menu
+          a.dropdown-item(href='/jobs') Job Listing
+          a.dropdown-item(href='/jobs/new') Post New Job
+          a.dropdown-item(href='/jobs/active') Active Jobs
+          a.dropdown-item(href='/jobs/due') Jobs Due in 5days
+
+
+    ul.nav.navbar-nav.right
+      li.nav-item  
+        a.nav-link(href='/employers') Members
+      if !isAuthenticated      
+        li.nav-item  
+          a.nav-link(href='/employers/new') Register 
+        li.nav-item  
+          a.nav-link(href='/login') Login  
+              
+      if isAuthenticated    
+        li.nav-item
+          form.nav-destroy(action=`/logout`, method="POST")
+            input.destroy(type="submit", value="Logout")
+      
