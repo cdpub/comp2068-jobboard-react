@@ -1,5 +1,5 @@
 {
-  "name": "comp2068-jobboard",
+  "name": "comp2068-jobboard-react",
   "version": "1.0.0",
   "description": "Job Board is a single resource RMVC application using Node.js, Express and MongoDB",
   "main": "app.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cdpub/comp2068-jobboard.git"
+    "url": "git+https://github.com/cdpub/comp2068-jobboard-react.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cdpub/comp2068-jobboard/issues"
+    "url": "https://github.com/cdpub/comp2068-jobboard-react/issues"
   },
-  "homepage": "https://github.com/cdpub/comp2068-jobboard#readme",
+  "homepage": "https://github.com/cdpub/comp2068-jobboard-react#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "connect-flash": "^0.1.1",
