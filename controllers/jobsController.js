@@ -11,7 +11,7 @@ exports.show = (req, res) => {
   Job.findOne({
       _id: req.params.id,
     })
-    .populate("employer")
+    .populate("company")
     .then(job => res.json(job))
     .catch(err => res.status(404).json(err));
 };
