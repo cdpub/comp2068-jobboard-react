@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {Redirect} from "react-router-dom";
 import Axios from "axios";
+import NotificationContext from "../notification_context";
 
 function Login() {
     const [inputs, setInputs] = useState({});
     const [redirect, setRedirect] = useState(false);
+    const {setNotification} = useContext(NotificationContext);
 
     function handleInputChange(event) {
         event.persist();
@@ -18,18 +20,27 @@ function Login() {
     function handleSubmit(event)    {
         event.preventDefault();
 
-        Axios.post("api/authenticate", {
-            email: inputs.email,
-            password: inputs.password
-        })
-
-        .then (() => {
-            //setInputs({});  //clear inputs by resetting inputs to empty object
+        Axios.post("api/authenticate", inputs )
+        .then (resp => {
+            setNotification(notification => {
+                return {
+                    ...notification,
+                    status: "success",
+                    message: "You are now logged-in."
+                };
+            });
             setRedirect(true);
         })    
-        .catch(err => console.error(err));
+        .catch(err => {
+            setNotification(notification => {
+                return {
+                    ...notification,
+                    status: "danger",
+                    message: "Authentication error."
+                };
+            });
+        });
     }
-
     if (redirect) return <Redirect to="/jobs" />;
 
     return (

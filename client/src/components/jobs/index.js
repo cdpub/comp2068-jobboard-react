@@ -35,7 +35,7 @@ function Index()    {
                         {jobs.map(job => (
                             <tr key={job._id}>
                                 <td><Link to={`/jobs/${job._id}`}>{job.title}</Link></td>
-                                <td>{job.employer && job.employer.company}</td>
+                                <td>{job.company && job.company.company}</td>
                                 <td>{job.position}</td>
                                 <td>{job.location}</td>
                                 <td>{job.status}</td>

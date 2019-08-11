@@ -1,6 +1,7 @@
 const Job = require('../models/job');
 
 exports.index = (req, res) => {
+  console.log("request", req.params);
   Job.find()
     .populate("company")
     .then(jobs => res.json(jobs))
@@ -34,7 +35,7 @@ exports.edit = (req, res) => {
 
   Job.findOne({
       _id: req.params.id,
-      employer: req.session.userId
+      company: req.session.userId
     })
     .then(job => res.send(job))
     .catch(err => res.status(404).send(err));
@@ -46,7 +47,7 @@ exports.update = (req, res) => {
 
   Job.updateOne({
       _id: req.body.id,
-      employer: req.session.userId
+      company: req.session.userId
     }, req.body.job, {
       runValidators: true
     })
@@ -61,7 +62,7 @@ exports.destroy = (req, res) => {
 
   Job.deleteOne({
       _id: req.body.id,
-      employer: req.session.userId
+      company: req.session.userId
     })
     .then(() => res.status(200).send({success: "Job Delete Successful."}))
     .catch(err => res.status(404).send(err));

@@ -17,17 +17,9 @@ function Edit(props) {
 
         Axios.post(`/api/jobs/update`, {
             id: props.match.params.id,
-            job: {
-                title: inputs.title,
-                position: inputs.position,
-                location: inputs.location,
-                status: inputs.status
-            }
+            job: inputs
         })
-            .then(resp => {
-                console.log(resp);
-                setRedirect(true)
-            })
+            .then(resp => setRedirect(true))
             .catch(err => console.error(err));
     }
 
@@ -71,8 +63,8 @@ function Edit(props) {
                     <div className="form-group">
                         <label>Status</label>
                         <select className="form-control" name="status" required="required" onChange={handleInputChange} defaultValue={inputs.status}>
-                        <option value="ACTIVE">active</option>
-                        <option value="DUE">due in 5days</option>
+                            <option value="ACTIVE">active</option>
+                            <option value="DUE">due in 5days</option>
                         </select>
                     </div>
 

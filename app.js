@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_URI, {
@@ -79,8 +79,12 @@ const routes = require(`./routes.js`);
 app.use(`/api`, routes);                                       
 
 //handles any request that don't match those above
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+const root = path.join(__dirname, '/client/build');
+app.use(express.static(root));
+app.use((req, res, next) => {
+  if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.pathincludes('.'))  {
+    res.sendFile('index.html', {root});
+  } else next();
 });
 
 // create dynamic port
