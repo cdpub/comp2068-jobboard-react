@@ -1,7 +1,8 @@
-import React from "react";
-import ReactDOM from"react-dom";
-import { BrowserRouter } from "react-router-dom";
+//React Router interprets user request
 
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from './components/app';
 
 ReactDOM.render(
@@ -10,3 +11,6 @@ ReactDOM.render(
     </BrowserRouter>,
     document.querySelector("#root")
 );
+
+
+

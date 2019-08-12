@@ -14,14 +14,14 @@ function Logout()   {
                 ...notification,
                 status: "success",
                 message: "You are now logged-out."    
-            }
+            };
         }))
         .catch(() => setNotification(notification =>    {
             return{
                 ...notification,
                 status: "danger",
                 message: "Oppss.... problem logging-out."
-            }
+            };
         }));
     }, []);         
 
