@@ -23,7 +23,7 @@ function Logout()   {
                 message: "Oppss.... problem logging-out."
             };
         }));
-    }, []);         
+    }, [setNotification]);         
 
     return <Redirect to="/" />;
 }
